@@ -1,0 +1,35 @@
+lista = {}
+
+def Processar1():
+    while True:
+        nome = input('Digite o nome do aluno: ')
+        quantidade = int(input('Quantas notas serão adicionadas? '))
+        notas = []
+        for x in range(1, quantidade + 1):
+            nota = float(input(f'Digite a nota {x}: '))
+            notas.append(nota)
+        lista[nome] = notas
+        decidir = input('\nDeseja adicionar outro aluno? (s/n): ').lower()
+        if decidir != 's':
+            break
+def Processar2():
+    medias = {}  
+
+    for nome, notas in lista.items():
+        media = sum(notas) / len(notas)
+        medias[nome] = media
+        print(f'{nome}: média {media}')
+
+    maior_nome = max(medias, key=medias.get)
+    menor_nome = min(medias, key=medias.get)
+    
+    print(f'Maior média: {maior_nome} ({medias[maior_nome]})')
+    print(f'Menor média: {menor_nome} ({medias[menor_nome]})')
+
+def Sistema():
+    while True:
+        Processar1()
+        print('-- Resumo da lista --')
+        Processar2()
+        break
+Sistema()
