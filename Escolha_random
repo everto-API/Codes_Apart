@@ -1,0 +1,29 @@
+import random
+
+def Jogo():
+    print('-- Bem vindo ao jogo de advinha! --')
+    print('-- Seu objetivo é advinhar o número que a máquina escolheu --\n')
+    while True:
+        maquina_escolha = random.randint(1, 100)
+        tentativas = 0
+        print('A máquina escolheu um número entre 1 a 100')
+        
+        while True:
+            try:
+                jogador_escolha = int(input('\nQual o seu palpite?\n> '))
+                tentativas += 1
+                if jogador_escolha == maquina_escolha:
+                    print(f'Parabéns, você acertou! Sua quantidade de tentativas foi {tentativas} vez(es)!')
+                    break
+                elif jogador_escolha > maquina_escolha:
+                    print('O número da máquina é menor!')
+                elif jogador_escolha < maquina_escolha:
+                    print('O número da máquina é maior!')
+            except ValueError:
+                print('Opa, só aceito números!')
+        
+        novo = input('Você deseja jogar novamente? (s/n)\n> ').lower()
+        if novo != 's':
+            break
+Jogo()
+    
