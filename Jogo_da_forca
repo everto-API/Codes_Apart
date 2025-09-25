@@ -1,0 +1,37 @@
+import random
+import time
+
+def Jogo_da_forca():
+    lista = ['python', 'programa', 'tecnologia']
+    palavra = random.choice(lista)
+    progresso = ['_' for x in palavra]
+    tentativas = 6
+    print('-- Jogo da Forca! --')
+    print(f'a palavra tem {len(palavra)} letras.')
+    print(' '.join(progresso))
+    
+    while True:
+        if tentativas == 0:
+            texto = '\n\n-- Uen uen uen ueeennnn, você esgotou todas as suas tentativas! --' 
+            for x in texto:
+                time.sleep(.02)
+                print(x, end='')
+            break
+        if tentativas > 0 and '_' in progresso:
+            escolha = input('\nDigite uma letra: ').lower()
+            if escolha in palavra:
+                for i, letra in enumerate(palavra):
+                    if letra == escolha:
+                        progresso[i] = letra
+                print(' '.join(progresso))
+            
+            else:
+                tentativas -= 1
+                print(f'Não tem esta letra na palavra!\ntentativas : {tentativas}')
+                print(' '.join(progresso))
+        if '_' not in progresso:
+            print(f'\n\n-- Parabéns! Você advinhou a palavra {palavra}! --')
+            break
+            
+Jogo_da_forca()
+    
